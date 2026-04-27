@@ -1,60 +1,146 @@
-# AI Content Skills
+<div align="center">
 
-一套为 AI Agent 设计的内容创作 Skill，覆盖公众号长文写作和小红书短图文生成。
+# 🎨 AI Content Skills
 
-基于 [Claude Code](https://github.com/anthropics/claude-code) 的 Skill 机制构建，可直接加载到支持 Skill 的 AI Agent 中使用。
+**一套让 AI Agent 真正能产出能用的内容的 Skill 全家桶**
 
-## 包含的 Skill
+不是 prompt 集合，是一整套可生产的内容方法论 — 覆盖**长文写作 + 短图文生成 + 达人发现**的完整内容运营链路。
 
-### 1. Writer（公众号长文写作）
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Skill: Claude Code](https://img.shields.io/badge/Skill-Claude%20Code-8A2BE2)](https://github.com/anthropics/claude-code)
+[![Stars](https://img.shields.io/github/stars/cool111111/ai-content-skills?style=social)](https://github.com/cool111111/ai-content-skills/stargazers)
 
-`writer/SKILL.md` — 一套完整的公众号长文写作方法论，从选题到成稿的全流程规范。
+</div>
 
-核心特点：
-- **HKR 选题质检**：Happy + Knowledge + Resonance 三维度评估选题
-- **口语化写作**：像聊天一样写文章，拒绝书面套话
-- **严格事实核查**：所有可验证事实必须有来源
-- **禁用词体系**：自动规避"说白了""本质上"等 AI 味词汇
-- 附带 `references/content_methodology.md`（内容方法论）和 `references/style_examples.md`（风格示例）
+> 这是我做 AI 内容运营时**实战沉淀**出来的方法论。
+> 从手动写作 → 模板化生产 → 多 Agent 自动化管线，把每一步经验都结构化成 AI Agent 能直接执行的规范。
 
-### 2. XHS Content（小红书短图文）
+<!-- TODO 在此处插入一张管线架构图 / 工作流截图 / 真实产出截图 -->
 
-`xhs-content/SKILL.md` — 小红书平台的短图文生成规范，继承 Writer 的风格底座并适配短内容场景。
+## 这套 Skill 解决什么问题
 
-核心特点：
-- **选题优先级**：KOL 观点 > 开源项目破圈 > 产品发布 > 行业数据
-- **四维评分体系**：钩子力 / 信息密度 / 传播性 / 互动潜力
-- **标题必杀技**：数字冲击、信息差、争议性等公式化钩子模板
-- **配图方案**：CDP 浏览器截取真实来源，支持降级策略
-- **数据追踪**：预测评分 vs 实际数据的反馈迭代机制
+普通 AI 写内容的三大病：**AI 味重 / 没钩子 / 没节奏**。
 
-## 使用方式
+这套 Skill 不靠"prompt 越写越长"硬扛，而是用方法论 + 质检流水线 + 反 AI 味词库系统化解决：
 
-将 Skill 文件放到你的 AI Agent 的 skills 目录下，Agent 会在需要时自动加载。
+| 病症 | 解决方案 |
+|------|---------|
+| AI 味重 | 60+ 高频套话黑名单 + 写完自动扫描重构 |
+| 选题平庸 | HKR 三维度选题质检（公众号）+ 四维评分（小红书） |
+| 没钩子没节奏 | 钩子模板库 + 平台节奏适配规则 |
+| 找达人慢 | 跨平台自动搜索 + 深度内容评估 |
+
+---
+
+## 📚 包含的 Skill
+
+### ✍️ [Writer Skill](https://github.com/cool111111/writer-skill) — 公众号长文
+
+[![Stars](https://img.shields.io/github/stars/cool111111/writer-skill?style=social)](https://github.com/cool111111/writer-skill)
+
+公众号长文写作方法论，从选题到成稿的全流程规范。
+
+- HKR 选题质检 / 反 AI 味词库 / 三级质检流水线
+- 完整的 `references/` 方法论文档库
+
+### 📕 [XHS Content Skill](https://github.com/cool111111/xhs-content-skill) — 小红书短图文
+
+[![Stars](https://img.shields.io/github/stars/cool111111/xhs-content-skill?style=social)](https://github.com/cool111111/xhs-content-skill)
+
+继承 Writer 的风格底座，针对小红书平台做了深度适配。
+
+- 选题优先级体系 / 标题钩子库 / 四维评分 / 反馈迭代闭环
+
+### 🔍 [find-influencer Skill](https://github.com/cool111111/find-influencer-skill) — 跨平台达人发现
+
+[![Stars](https://img.shields.io/github/stars/cool111111/find-influencer-skill?style=social)](https://github.com/cool111111/find-influencer-skill)
+
+跨平台达人发现 + 深度评估自动化，覆盖小红书 / 抖音 / B 站 / YouTube。
+
+- 实战覆盖 5000+ 创作者筛选评估
+- 把"找达人"从 3-5 小时压缩到 15-20 分钟
+
+---
+
+## 🚀 全家桶安装
+
+如果你想**一次装齐所有 skill**：
+
+```bash
+# Clone 整个仓库
+git clone https://github.com/cool111111/ai-content-skills.git
+
+# 把每个 skill 软链到你 Agent 的 skills 目录
+ln -s $(pwd)/ai-content-skills/writer ~/.your-agent/skills/writer
+ln -s $(pwd)/ai-content-skills/xhs-content ~/.your-agent/skills/xhs-content
+
+# find-influencer 在独立 repo（依赖较多，单独装）
+git clone https://github.com/cool111111/find-influencer-skill.git \
+  ~/.your-agent/skills/find-influencer
+```
+
+只想装某一个？直接去对应 repo 单独 clone，互不影响。
+
+---
+
+## 🔧 实战中我怎么用
+
+这套 Skill 不是写出来"看着好"的，是真在跑的：
 
 ```
-your-agent/
-├── skills/
-│   ├── writer/
-│   │   ├── SKILL.md
-│   │   └── references/
-│   │       ├── content_methodology.md
-│   │       └── style_examples.md
-│   └── xhs-content/
-│       └── SKILL.md
+Twitter KOL × 3 ─────┐
+GitHub Trending ─────┼──→ 日报汇总 ──→ 选题筛选 ──→ XHS Content Skill ──→ 推飞书审稿 ──→ 发布
+AI 新闻聚合 ─────────┘                                         │
+                                                              └──→ Writer Skill（深度长文）
 ```
 
-## 背景
+**9 个 Agent 并行 / 每天 30 分钟跑完 / 稳定产出 3-5 条候选稿件。**
 
-这套 Skill 是我在做 AI 产品内容运营时逐步沉淀的方法论。从手动写作到模板化生产，再到自动化管线，核心经验被结构化成了 AI Agent 可执行的规范。
+我只做最后一步：审稿 + 发布。
 
-- Writer Skill 用于生产深度技术长文（公众号）
-- XHS Content Skill 用于日更短图文（小红书），配合 AI 日报管线实现半自动化产出
+---
+
+## 📁 目录结构
+
+```
+ai-content-skills/
+├── writer/              # Writer Skill 完整内容（与独立 repo 同步）
+│   ├── SKILL.md
+│   └── references/
+│       ├── content_methodology.md
+│       └── style_examples.md
+└── xhs-content/         # XHS Content Skill 完整内容（与独立 repo 同步）
+    └── SKILL.md
+```
+
+> `find-influencer` 因为依赖较多（whisper / ffmpeg / opencli），保留为独立 repo，不打包进全家桶。
+
+---
+
+## 💡 适用场景
+
+- 个人博主 / 自媒体 — 用 AI 提效，但拒绝 AI 味
+- AI 产品的内容运营 — 把内容生产规模化、标准化
+- 多 Agent 系统开发者 — 直接复用我的方法论，不用从零踩坑
+
+---
 
 ## 致谢
 
-Writer Skill 的框架设计参考了开源社区的 Claude Skill 实践，在此基础上融入了个人的写作风格和运营方法论。
+Writer Skill 框架借鉴了开源社区的 Claude Skill 实践，在此基础上融入了我个人的写作方法论和实战运营经验。
 
 ## License
 
-MIT
+MIT — 觉得有用就 **star 一下** ⭐ 是最大的鼓励。
+
+---
+
+<details>
+<summary>📷 怎么贴架构图 / demo 截图？</summary>
+
+1. 在 GitHub 网页打开 README，点右上角铅笔图标
+2. **直接把图拖到编辑框**，GitHub 自动上传
+3. 把生成的标记剪切到上面 `<!-- TODO -->` 那一行
+4. 保存
+
+</details>
